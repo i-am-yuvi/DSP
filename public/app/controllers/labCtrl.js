@@ -45,7 +45,7 @@ var dsp_LabCtrl = function ($scope, ServerResponse, $log, SocketService, dockerI
   //Button action import or delete
   vm.deleteImportButton = buttonDeleteProto
   $scope.CurrentLabService = CurrentLabService;
-  vm.editVisible = false
+  CurrentLabService.editVisible = false
   vm.repos,
     vm.lab = {},
     vm.labels = [],
@@ -147,7 +147,7 @@ var dsp_LabCtrl = function ($scope, ServerResponse, $log, SocketService, dockerI
               //If doesn't exists create new network button
               if (!exists) {
                 vm.buttonAction = buttonCreateProto
-                vm.editVisible = false
+                CurrentLabService.editVisible = false
                 vm.exists = false;
               } else {
                 dockerImagesService.areImagesInstalled(vm.repoName, vm.lab.name)
@@ -156,7 +156,7 @@ var dsp_LabCtrl = function ($scope, ServerResponse, $log, SocketService, dockerI
                     if (!areInstalled) {
                       console.log("NOT INSTALLED");
                       CurrentLabService.noImages = true;
-                      vm.editVisible = false;                    
+                      CurrentLabService.editVisible = false;                    
                     } else {
                       dockerImagesService.get(function (images) {
                         $scope.interactiveImageList = images;
@@ -207,7 +207,7 @@ var dsp_LabCtrl = function ($scope, ServerResponse, $log, SocketService, dockerI
               // Check the state
               if (labToUse.state === 'NO_NETWORK') {
                 vm.buttonAction = buttonCreateProto
-                vm.editVisible = false
+                CurrentLabService.editVisible = false
               }
               // Else go button or images
               else {
@@ -226,7 +226,7 @@ var dsp_LabCtrl = function ($scope, ServerResponse, $log, SocketService, dockerI
 
                 });
                 vm.buttonAction = buttonGoProto
-                vm.editVisible = true
+                CurrentLabService.editVisible = true
               }
 
               if (labToUse.informations) {

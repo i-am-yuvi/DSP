@@ -111,6 +111,7 @@ var dsp_imagesDownloadComponent  =
                 }
                 else {
                   CurrentLabService.noImages = false;
+                  CurrentLabService.editVisible = true;
                 }
               })
               

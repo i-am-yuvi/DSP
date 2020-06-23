@@ -2,6 +2,7 @@ function dsp_currentLab()  {
 
 this.currentLab = {};
 this.noImages;
+this.editVisible;
 
 
 
